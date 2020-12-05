@@ -1,7 +1,86 @@
+body {
+  padding: 0;
+  margin: 30px auto;
+  font-family: "Spartan", sans-serif;
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  background-image: linear-gradient(
+    to top,
+    #dad4ec 0%,
+    #dad4ec 1%,
+    #f3e7e9 100%
+  );
+  background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+}
+
+.weather-app {
+  margin: 0 auto;
+  padding: 30px 45px;
+  border-radius: 66px;
+  max-width: 650px;
+  background-image: linear-gradient(
+    to top,
+    #dad4ec 0%,
+    #dad4ec 1%,
+    #f3e7e9 100%
+  );
+}
+
 h1 {
   font-size: 38px;
   margin: 0 auto;
   letter-spacing: 2px;
   padding-top: 10px;
   text-transform: uppercase;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  color: rgb(36, 32, 31);
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+h4 {
+  margin: 20px 0 0 0;
+  font-size: 18px;
+}
+
+a {
+  color: black;
+}
+
+.weather-headline {
+  margin: 10px 30px 70px 30px;
+  text-align: center;
+}
+
+.current-weather {
+  margin: 30px 0;
+}
+
+.weather-icon {
+  margin: 0 auto;
+  display: block;
+  width: 50%;
+}
+
+.list-group-item {
+  border: 0px;
+  padding: 3px;
+  background: transparent;
+  font-size: 14px;
+}
+
+.footer {
+  font-size: 11px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 45px;
+  max-width: 650px;
 }
