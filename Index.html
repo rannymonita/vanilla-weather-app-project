@@ -34,38 +34,40 @@
         </div>
 
         <div class="row current-weather">
-          <div class="col-sm-4">
-            <h2><span class="temp-input" id="current-temp">18</span>&deg;</h2>
-            <ul class="list-group list-group-horizontal-sm">
-              <li class="list-group-item">
-                <a href="#" id="celcius-link"><strong>&deg;C</strong></a>
-              </li>
-              <li class="list-group-item">|</li>
-              <li class="list-group-item">
-                <a href="#" id="fahrenheit-link">&deg;F</a>
-              </li>
-            </ul>
+          <div class="col-sm-6">
+            <div class="clearfix">
+              <h2><span class="temp-input" id="current-temp">18</span>&deg;</h2>
+
+              <div class="float-left">
+                <span class="units">
+                  <ul class="list-group list-group-horizontal-sm">
+                    <li class="list-group-item">
+                      <a href="#" id="celcius-link"><strong>C&deg;</strong></a>
+                    </li>
+                    <li class="list-group-item">|</li>
+                    <li class="list-group-item">
+                      <a href="#" id="fahrenheit-link">F&deg;</a>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div class="col-sm-4">
-            <ul class="list-group">
-              <li class="list-group-item">Real feel</li>
-              <li class="list-group-item">Humidity</li>
-              <li class="list-group-item">Wind</li>
-              <li class="list-group-item">UV Index</li>
-            </ul>
-          </div>
-
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <ul class="list-group">
               <li class="list-group-item">
-                <span id="real-feel-temp">15</span>&deg;
+                Real feel : <span id="real-feel-temp">15</span>&deg;
               </li>
-              <li class="list-group-item"><span id="humidity">100</span>%</li>
               <li class="list-group-item">
-                <span id="wind-speed"> 11 </span>Km/hr
+                Humidity : <span id="humidity">100</span>%
               </li>
-              <li class="list-group-item">0</li>
+              <li class="list-group-item">
+                Wind : <span id="wind-speed">11 </span>Km/hr
+              </li>
+              <li class="list-group-item">
+                UV Index : <span id="uv-index">1</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -73,7 +75,7 @@
       <div class="footer">
         <small
           ><a href="https://github.com/rannymonita/vanilla-weather-app-project"
-            >Open-source code</a
+            ><strong>Open-source code</strong></a
           >
           by Ranny Monita</small
         >
