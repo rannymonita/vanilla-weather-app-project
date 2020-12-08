@@ -51,12 +51,18 @@ function displayTemperature(response) {
   let currentRealFeelElement = document.querySelector("#real-feel-temp");
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
+  let mainIconElement = document.querySelector("#main-icon");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
+  descriptionElement.innerHTML = `${response.data.weather[0].description}`;
   currentRealFeelElement.innerHTML = Math.round(response.data.main.feels_like);
-  humidityElement.innerHTML = `${response.data.main.humidity}`;
-  windSpeedElement.innerHTML = `${response.data.wind.speed} `;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windSpeedElement.innerHTML = response.data.wind.speed;
+  mainIconElement.setAttribute(
+    "src",
+    `icon/${response.data.weather[0].icon}.svg`
+  );
+  mainIconElement.setAttribute("alt", `${descriptionElement}`);
 
   function displayUV(response) {
     console.log(response.data);
@@ -73,7 +79,7 @@ function displayTemperature(response) {
 
 let apiKey = "823e2e84bc5835e87564bbced4b8cd86";
 let unit = "metric";
-let city = "Lisbon";
+let city = "lisbon";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 
 axios.get(apiUrl).then(displayTemperature);
