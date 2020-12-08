@@ -1,4 +1,6 @@
 // Date & Time Display
+
+// Date & Time Display
 let currentTime = new Date();
 
 let days = [
@@ -30,15 +32,19 @@ let date = currentTime.getDate();
 let hour = currentTime.getHours();
 if (hour < 10) {
   hour = `0${hour}`;
+} else {
+  hour = hour + "";
 }
 let minute = currentTime.getMinutes();
 if (minute < 10) {
   minute = `0${minute}`;
+} else {
+  minute = minute + ``;
 }
 let newTime = `${hour}:${minute}`;
 
-let dateElement = document.querySelector("#current-date");
-dateElement.innerHTML = `${day}, ${month} ${date}, ${newTime}`;
+let h4 = document.querySelector("#current-date");
+h4.innerHTML = `${day}, ${month} ${date}, ${newTime}`;
 
 //API
 
@@ -77,9 +83,30 @@ function displayTemperature(response) {
   axios.get(apiUrlUvIndex).then(displayUV);
 }
 
-let apiKey = "823e2e84bc5835e87564bbced4b8cd86";
-let unit = "metric";
-let city = "lisbon";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+function search(city) {
+  let apiKey = "823e2e84bc5835e87564bbced4b8cd86";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 
-axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#user-city-input");
+  let h1 = document.querySelector("h1");
+
+  if (cityInputElement.value) {
+    h1.innerHTML = `${cityInputElement.value}`.toLocaleUpperCase();
+  } else {
+    alert(`Please type a city`);
+  }
+
+  let city = cityInputElement.value;
+
+  search(city);
+}
+
+let form = document.querySelector("#city-name");
+form.addEventListener("submit", handleSubmit);
+search("Lisbon");

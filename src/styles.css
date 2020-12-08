@@ -59,6 +59,14 @@ h4 {
 a {
   color: black;
 }
+.form-control.search-box {
+  display: block;
+  width: 100%;
+  font-size: 11px;
+  background-color: #f1e5e9;
+  border: 1px solid #bfbfbf;
+  margin-bottom: 22px;
+}
 
 .weather-headline {
   margin: 30px 30px 70px 30px;
