@@ -95,6 +95,21 @@ a {
   text-decoration: none;
 }
 
+.card-style {
+  margin: 0 auto;
+  background: transparent;
+  border: transparent;
+}
+.card-header {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.btn.data-title {
+  color: #2d1b00;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
 .card-body {
   margin: 0 auto;
   display: inline-block;
@@ -106,7 +121,7 @@ a {
   margin: 0 20px;
   text-align: center;
   color: #2d1b00;
-  width: 40px;
+  width: 45px;
 }
 
 .daily-forecast .day {
@@ -121,7 +136,8 @@ a {
 
 .daily-forecast .max-temp {
   font-weight: bolder;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 27px;
   padding: 0%;
 }
 
