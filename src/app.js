@@ -1,6 +1,4 @@
 // Date & Time Display
-
-// Date & Time Display
 let currentTime = new Date();
 
 let days = [
@@ -58,10 +56,14 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
   let mainIconElement = document.querySelector("#main-icon");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+
+  celsiusTemp = response.data.main.temp;
+  celsiusTempFeelsLike = response.data.main.feels_like;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = `${response.data.weather[0].description}`;
-  currentRealFeelElement.innerHTML = Math.round(response.data.main.feels_like);
+  currentRealFeelElement.innerHTML = Math.round(celsiusTempFeelsLike);
   humidityElement.innerHTML = response.data.main.humidity;
   windSpeedElement.innerHTML = response.data.wind.speed;
   mainIconElement.setAttribute(
@@ -71,8 +73,6 @@ function displayTemperature(response) {
   mainIconElement.setAttribute("alt", `${descriptionElement}`);
 
   function displayUV(response) {
-    console.log(response.data);
-
     let UvElement = document.querySelector(`#uv-index`);
     UvElement.innerHTML = Math.round(response.data.value);
   }
@@ -107,6 +107,42 @@ function handleSubmit(event) {
   search(city);
 }
 
+function updateTempToFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((celsiusTemp * 9) / 5 + 32);
+  let fahrenheitRealFeel = Math.round((celsiusTempFeelsLike * 9) / 5 + 32);
+  document.querySelector(`#current-temp`).innerHTML = fahrenheitTemperature;
+  document.querySelector("#real-feel-temp").innerHTML = fahrenheitRealFeel;
+  fahrenheitLink.innerHTML = `<strong>F°</strong>`;
+  celsiusLink.innerHTML = `C°`;
+}
+
+function updateTempToCelsius(event) {
+  event.preventDefault();
+  let celsiusTemperature = Math.round(celsiusTemp);
+  let celsiusRealFeel = Math.round(celsiusTempFeelsLike);
+  document.querySelector(`#current-temp`).innerHTML = celsiusTemperature;
+  document.querySelector("#real-feel-temp").innerHTML = celsiusRealFeel;
+  fahrenheitLink.innerHTML = `F°`;
+  celsiusLink.innerHTML = `<strong>C°</strong>`;
+}
+
+// global variable
+
+let celsiusTemp = null;
+let celsiusTempFeelsLike = null;
+
+// Search engine
+
 let form = document.querySelector("#city-name");
 form.addEventListener("submit", handleSubmit);
+
+// Unit conversion
+
+let celsiusLink = document.querySelector("#celsius-link");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+
+fahrenheitLink.addEventListener("click", updateTempToFahrenheit);
+celsiusLink.addEventListener("click", updateTempToCelsius);
+
 search("Lisbon");

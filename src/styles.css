@@ -90,6 +90,11 @@ a {
   font-size: 14px;
 }
 
+.units .active {
+  color: rgb(36, 32, 31);
+  text-decoration: none;
+}
+
 .footer {
   font-size: 11px;
   margin: 0 auto;
@@ -97,4 +102,9 @@ a {
   padding: 10px 45px;
   max-width: 650px;
   letter-spacing: 1px;
+}
+
+.footer .active {
+  color: rgb(36, 32, 31);
+  text-decoration: none;
 }
