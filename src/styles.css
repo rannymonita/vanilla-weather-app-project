@@ -95,6 +95,42 @@ a {
   text-decoration: none;
 }
 
+.card-body {
+  margin: 0 auto;
+  display: inline-block;
+  padding: 20px;
+}
+
+
+
+.daily-forecast {
+  display: inline-block;
+  margin: 0 20px;
+  text-align: center;
+  color: #2d1b00;
+}
+
+.daily-forecast .day {
+  font-size: 14px;
+}
+
+.daily-forecast .icon {
+  font-weight: bolder;
+  font-size: 33px;
+  padding: 0%;
+}
+
+.daily-forecast .max-temp {
+  font-weight: bolder;
+  font-size: 16px;
+  padding: 0%;
+}
+
+.daily-forecast .min-temp {
+  font-size: 12px;
+  padding: 0%;
+}
+
 .footer {
   font-size: 11px;
   margin: 0 auto;
