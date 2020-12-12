@@ -104,10 +104,12 @@ a {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.btn.data-title {
+.btn.active {
   color: #2d1b00;
   font-weight: 500;
   margin: 0 auto;
+  text-decoration: none;
+  cursor: default;
 }
 
 .card-body {
@@ -121,17 +123,20 @@ a {
   margin: 0 20px;
   text-align: center;
   color: #2d1b00;
-  width: 45px;
+  width: 53px;
 }
 
-.daily-forecast .day {
-  font-size: 14px;
+.daily-forecast .hour {
+  font-size: 12px;
 }
 
 .daily-forecast .icon {
   font-weight: bolder;
   font-size: 33px;
   padding: 0%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 8px;
 }
 
 .daily-forecast .max-temp {

@@ -44,6 +44,20 @@ let newTime = `${hour}:${minute}`;
 let h4 = document.querySelector("#current-date");
 h4.innerHTML = `${day}, ${month} ${date}, ${newTime}`;
 
+function formatHours(timestamp) {
+  let forecastDate = new Date(timestamp);
+  let hours = forecastDate.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = forecastDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
+
 //API
 
 function displayTemperature(response) {
@@ -83,12 +97,42 @@ function displayTemperature(response) {
   axios.get(apiUrlUvIndex).then(displayUV);
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast-hourly");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+
+    forecastElement.innerHTML += `
+  <span class="daily-forecast">
+    <ul class="list-group">
+        <li class="list-group-item hour">${formatHours(forecast.dt * 1000)}</li>
+        <li class="list-group-item icon">
+          <img src="icon/${forecast.weather[0].icon}.svg" />
+        </li>
+        <li class="list-group-item max-temp" id="forecast-max-temp">${Math.round(
+          forecast.main.temp_max
+        )}&deg;</li>
+        <li class="list-group-item min-temp" id="forecast-min-temp">${Math.round(
+          forecast.main.temp_min
+        )}&deg;</li>
+    </ul>
+  </span>
+  `;
+  }
+}
+
 function search(city) {
   let apiKey = "823e2e84bc5835e87564bbced4b8cd86";
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 
   axios.get(apiUrl).then(displayTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -115,6 +159,12 @@ function updateTempToFahrenheit(event) {
   document.querySelector("#real-feel-temp").innerHTML = fahrenheitRealFeel;
   fahrenheitLink.innerHTML = `<strong>F°</strong>`;
   celsiusLink.innerHTML = `C°`;
+  document.querySelector(`#forecast-max-temp`).innerHTML = Math.round(
+    (forecast.main.temp_max * 9) / 5 + 32
+  );
+  document.querySelector(`#forecast-min-temp`).innerHTML = Math.round(
+    (forecast.main.temp_min * 9) / 5 + 32
+  );
 }
 
 function updateTempToCelsius(event) {

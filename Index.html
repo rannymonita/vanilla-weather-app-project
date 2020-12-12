@@ -70,16 +70,16 @@
           <div class="col-sm-6">
             <ul class="list-group">
               <li class="list-group-item">
-                Real feel : <span id="real-feel-temp">15</span>&deg;
+                Real feel : <span id="real-feel-temp"></span>&deg;
               </li>
               <li class="list-group-item">
-                Humidity : <span id="humidity">100</span> %
+                Humidity : <span id="humidity"></span> %
               </li>
               <li class="list-group-item">
-                Wind : <span id="wind-speed">11 </span> Km/hr
+                Wind : <span id="wind-speed"> </span> Km/hr
               </li>
               <li class="list-group-item">
-                UV Index : <span id="uv-index">1</span>
+                UV Index : <span id="uv-index"></span>
               </li>
             </ul>
           </div>
@@ -89,14 +89,16 @@
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
               <button
-                class="btn btn-link btn-block text-center collapsed data-title text-nowrap"
+                class="btn btn-link btn-block text-center collapsed data-title text-nowrap active"
                 type="button"
-                data-toggle="collapse"
+                data-bs-toggle="collapse"
+                href="#collapseTwo"
                 data-target="#collapseTwo"
-                aria-expanded="true"
+                role="button"
+                aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                Forecast
+                Next hours
               </button>
             </h2>
           </div>
@@ -108,60 +110,9 @@
             data-parent="#accordionExample"
           >
             <div class="card-body">
-              <span class="daily-forecast">
-                <ul class="list-group">
-                  <li class="list-group-item day">WED</li>
-                  <li class="list-group-item icon">
-                    <img src="icon/03d.svg" />
-                  </li>
-                  <li class="list-group-item max-temp">20&deg;</li>
-                  <li class="list-group-item min-temp">14&deg;</li>
-                </ul>
-              </span>
-
-              <span class="daily-forecast">
-                <ul class="list-group">
-                  <li class="list-group-item day">THU</li>
-                  <li class="list-group-item icon">
-                    <img src="icon/03d.svg" />
-                  </li>
-                  <li class="list-group-item max-temp">20&deg;</li>
-                  <li class="list-group-item min-temp">14&deg;</li>
-                </ul>
-              </span>
-
-              <span class="daily-forecast">
-                <ul class="list-group">
-                  <li class="list-group-item day">FRI</li>
-                  <li class="list-group-item icon">
-                    <img src="icon/03d.svg" />
-                  </li>
-                  <li class="list-group-item max-temp">20&deg;</li>
-                  <li class="list-group-item min-temp">14&deg;</li>
-                </ul>
-              </span>
-
-              <span class="daily-forecast">
-                <ul class="list-group">
-                  <li class="list-group-item day">SAT</li>
-                  <li class="list-group-item icon">
-                    <img src="icon/03d.svg" />
-                  </li>
-                  <li class="list-group-item max-temp">20&deg;</li>
-                  <li class="list-group-item min-temp">14&deg;</li>
-                </ul>
-              </span>
-
-              <span class="daily-forecast">
-                <ul class="list-group">
-                  <li class="list-group-item day">SUN</li>
-                  <li class="list-group-item icon">
-                    <img src="icon/03d.svg" />
-                  </li>
-                  <li class="list-group-item max-temp">20&deg;</li>
-                  <li class="list-group-item min-temp">14&deg;</li>
-                </ul>
-              </span>
+              <div id="forecast-hourly">
+                
+              </div>
             </div>
           </div>
         </div>
@@ -174,7 +125,10 @@
             class="active"
             ><strong>Open-source code</strong></a
           >
-          by Ranny Monita</small
+          by <a
+            href="https://github.com/rannymonita/vanilla-weather-app-project"
+            class="active"
+            >Ranny Monita</a></small
         >
       </div>
     </div>
