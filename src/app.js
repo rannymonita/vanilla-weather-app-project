@@ -79,7 +79,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = `${response.data.weather[0].description}`;
   currentRealFeelElement.innerHTML = Math.round(celsiusTempFeelsLike);
   humidityElement.innerHTML = response.data.main.humidity;
-  windSpeedElement.innerHTML = response.data.wind.speed;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   mainIconElement.setAttribute(
     "src",
     `icon/${response.data.weather[0].icon}.svg`

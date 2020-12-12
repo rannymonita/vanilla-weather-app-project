@@ -15,7 +15,7 @@ body {
 .weather-app {
   margin: 0 auto;
   padding: 30px 45px;
-  border-radius: 66px;
+  border-radius: 2px;
   max-width: 650px;
   background-image: linear-gradient(
     to top,
@@ -115,7 +115,6 @@ a {
 .card-body {
   margin: 0 auto;
   display: inline-block;
-  padding: 20px;
 }
 
 .daily-forecast {
