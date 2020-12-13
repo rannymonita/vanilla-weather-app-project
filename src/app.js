@@ -135,6 +135,10 @@ function search(city) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(displayForecast);
+
+  //disable the event to avoid double conversions
+  fahrenheitLink.addEventListener("click", updateTempToFahrenheit);
+  celsiusLink.removeEventListener("click", updateTempToCelsius);
 }
 
 function handleSubmit(event) {
