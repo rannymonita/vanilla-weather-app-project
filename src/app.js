@@ -93,7 +93,7 @@ function displayTemperature(response) {
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
   let apiKey = "823e2e84bc5835e87564bbced4b8cd86";
-  let apiUrlUvIndex = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  let apiUrlUvIndex = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
   axios.get(apiUrlUvIndex).then(displayUV);
 }
 
