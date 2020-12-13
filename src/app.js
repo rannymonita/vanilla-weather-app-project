@@ -70,6 +70,8 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
   let mainIconElement = document.querySelector("#main-icon");
+  fahrenheitLink.innerHTML = `F°`;
+  celsiusLink.innerHTML = `<strong>C°</strong>`;
 
   celsiusTemp = response.data.main.temp;
   celsiusTempFeelsLike = response.data.main.feels_like;
@@ -112,12 +114,12 @@ function displayForecast(response) {
         <li class="list-group-item icon">
           <img src="icon/${forecast.weather[0].icon}.svg" />
         </li>
-        <li class="list-group-item max-temp" id="forecast-max-temp">${Math.round(
+        <li class="list-group-item max-temp"> <span class="forecast-max-temp">${Math.round(
           forecast.main.temp_max
-        )}&deg;</li>
-        <li class="list-group-item min-temp" id="forecast-min-temp">${Math.round(
+        )}</span>&deg;</li>
+        <li class="list-group-item min-temp"><span class="forecast-min-temp">${Math.round(
           forecast.main.temp_min
-        )}&deg;</li>
+        )}</span>&deg;</li>
     </ul>
   </span>
   `;
@@ -159,12 +161,25 @@ function updateTempToFahrenheit(event) {
   document.querySelector("#real-feel-temp").innerHTML = fahrenheitRealFeel;
   fahrenheitLink.innerHTML = `<strong>F°</strong>`;
   celsiusLink.innerHTML = `C°`;
-  document.querySelector(`#forecast-max-temp`).innerHTML = Math.round(
-    (forecast.main.temp_max * 9) / 5 + 32
-  );
-  document.querySelector(`#forecast-min-temp`).innerHTML = Math.round(
-    (forecast.main.temp_min * 9) / 5 + 32
-  );
+
+  let forecastItemsMax = document.querySelectorAll(".forecast-max-temp");
+  forecastItemsMax.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let forecastItemsMin = document.querySelectorAll(".forecast-min-temp");
+  forecastItemsMin.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+  //disable the event to avoid double conversions
+  fahrenheitLink.removeEventListener("click", updateTempToFahrenheit);
+  celsiusLink.addEventListener("click", updateTempToCelsius);
 }
 
 function updateTempToCelsius(event) {
@@ -175,6 +190,24 @@ function updateTempToCelsius(event) {
   document.querySelector("#real-feel-temp").innerHTML = celsiusRealFeel;
   fahrenheitLink.innerHTML = `F°`;
   celsiusLink.innerHTML = `<strong>C°</strong>`;
+
+  let forecastItemsMax = document.querySelectorAll(".forecast-max-temp");
+  forecastItemsMax.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+  let forecastItemsMin = document.querySelectorAll(".forecast-min-temp");
+  forecastItemsMin.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+  //disable the event to avoid double conversions
+  fahrenheitLink.addEventListener("click", updateTempToFahrenheit);
+  celsiusLink.removeEventListener("click", updateTempToCelsius);
 }
 
 // global variable
